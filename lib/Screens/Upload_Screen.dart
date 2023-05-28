@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:tilapia_diseases/DB/hive_db.dart';
 import 'package:tilapia_diseases/Screens/Search_Screen.dart';
 import 'package:tflite_flutter/tflite_flutter.dart' as tfl;
 import 'package:image/image.dart' as img;
@@ -18,9 +19,9 @@ class _UploadState extends State<Upload> {
   late List _results;
   bool imageSelect = false;
   final imagepicker = ImagePicker();
-
+  var pickedImage;
   selectImageFromGallery() async {
-    var pickedImage = await imagepicker.getImage(source: ImageSource.gallery);
+    pickedImage = await imagepicker.getImage(source: ImageSource.gallery);
     if (pickedImage != null) {
       setState(() {
         _image = File(pickedImage.path);
@@ -62,6 +63,11 @@ class _UploadState extends State<Upload> {
     setState(() {
       _results = recognitions!;
       _image = image;
+      print(recognitions!);
+      String resultInLabel = recognitions![0]['confidence']>0.5 ? 'This fish may be infected' : 'This fish may be health';
+      print(resultInLabel);
+      print(_image.path.toString());
+      HiveDb.instance.storeImageWithText(resultInLabel, _image.path);
       imageSelect = true;
     });
   }
