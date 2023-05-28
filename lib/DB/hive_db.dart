@@ -1,7 +1,7 @@
 import 'dart:convert';
+import 'dart:html';
 import 'dart:io';
 import 'package:hive/hive.dart';
-
 
 class HiveDb {
   HiveDb._privateConstructor();
@@ -14,20 +14,22 @@ class HiveDb {
 
   String _key_boxName = 'box';
 
-  Future<void> init()async{
-  box = await Hive.openBox(_key_boxName);
+  Future<void> init() async {
+    box = await Hive.openBox(_key_boxName);
   }
 
   Future<void> storeImageWithText(String label, String imageFilePath) async {
-    Map<String , String> dataInMap = {'label' : label,'path' : imageFilePath};
+    Map<String, String> dataInMap = {'label': label, 'path': imageFilePath};
     box.add(dataInMap).then((value) {
       printAllStoredData();
     });
+
   }
 
-  void printAllStoredData(){
+  void printAllStoredData() {
     print('\n\n\n**************** Stored Data ************\n\n');
-    box.keys.map((e) => box.get(e)).toList().forEach((element) {print(element['label']);});
+    box.keys.map((e) => box.get(e)).toList().forEach((element) {
+      print(element['label']);
+    });
   }
-
 }

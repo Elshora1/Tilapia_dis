@@ -64,7 +64,7 @@ class _UploadState extends State<Upload> {
       _results = recognitions!;
       _image = image;
       print(recognitions!);
-      String resultInLabel = recognitions![0]['confidence']>0.5 ? 'This fish may be infected' : 'This fish may be health';
+      String resultInLabel = recognitions![0]['confidence']>0.5 ? 'This fish may beeeeeee infected' : 'This fish may be health';
       print(resultInLabel);
       print(_image.path.toString());
       HiveDb.instance.storeImageWithText(resultInLabel, _image.path);
