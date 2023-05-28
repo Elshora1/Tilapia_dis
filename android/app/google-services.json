@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "691301739914",
+    "project_id": "imagelabelproject-6c9cb",
+    "storage_bucket": "imagelabelproject-6c9cb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:691301739914:android:083392443c8430b4a4ec73",
+        "android_client_info": {
+          "package_name": "com.example.tilapia_diseases"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMjDe1B5FPhlJzOms-beI3fsRzUgfRXSo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
